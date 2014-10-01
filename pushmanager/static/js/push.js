@@ -387,7 +387,14 @@ $(function() {
                         'url': '/deploypush',
                         'data': {'id': $('#push-info').attr('push')},
                         'success': function() {
-                            $("#added-items").children().detach().appendTo('#staged-items');
+                            var requests = $("#added-items").children();
+                            requests.each(function() {
+                                if($(this).find('.tag-no-verify').length > 0) {
+                                    $(this).find('.verify-request')[0].click();
+                                } else {
+                                    $(this).detach().appendTo('#staged-items');
+                                }
+                            });
                             setTimeout('PushManager.update_status_counts()', 50);
                         },
                         'error': function() { alert("Something went wrong when marking the newly added items as staged."); }
