@@ -1,16 +1,16 @@
 # Pushmanager
 
-[![Build Status](https://travis-ci.org/Yelp/pushmanager.png?branch=master)](https://travis-ci.org/Yelp/Testify)
+[![Build Status](https://travis-ci.org/Yelp/pushmanager.png?branch=master)](https://travis-ci.org/Yelp/pushmanager)
 
-Pushmanager is a tornado web application we use to manage deployments at Yelp.
-It helps pushmasters to conduct deployments by providing a centralized view of
-push requests from engineers and other related information from reviews, tests,
-and issue trackers.
+Pushmanager is a [Tornado](https://github.com/tornadoweb/tornado) web
+application we use to manage deployments at Yelp.  It helps pushmasters conduct
+deployments by providing a centralized view of push requests from engineers and
+any information they need from reviews, tests, and issue trackers.
 
-Pushmanager has integration for:
+Pushmanager has been integrated with:
 * Reviewboard
 * Buildbot
-* Trac, JIRA, etc
+* Trac, JIRA
 * Git
 * IRC
 * XMPP
@@ -21,10 +21,12 @@ Pushmanager has integration for:
 The following terms are used by pushmanager:
 
 * Push - The entire process of deploying code to the production environment
-* Push Request - A branch that is can be included in a push
+* Push Request - A branch that can be included in a push
 * Pushee - A developer who has push requests in a push
-* Pushmaster - The privileged user who manages a push and ultimately runs all the commands to deploy a push
-* Deploy Branch - A special branch that contains all the push requests in a push
+* Pushmaster - The privileged user who manages a push and ultimately runs all
+  the commands to deploy a push
+* Deploy Branch - A special branch that contains all the push requests in a
+  push
 * Pickme - A push request that a developer wants to include in a push
 * Certification - Once a push has been deployed to master and is accepted, it
   should be explicitly marked as good. This typically means the deploy-branch
@@ -45,8 +47,8 @@ master and certified.
 1. Pickme into an open push
 1. Wait for the pushmaster to accept the branch and push the compiled deploy
    branch to the staging area
-1. Verify and confirm verification of the branch
-1. Wait for the pushmanater to push the deploy branch and certify the branch
+1. Verify the branch in the staging area
+1. Wait for the pushmaster to push the deploy branch and certify the branch
 
 ### Pushmaster Perspective
 
@@ -61,8 +63,9 @@ master and certified.
 
 ## Manually Deploying Pushmanager
 
-Pushmanager is two services - an api backend and a tornado frontend. Both must
-be run from inside a virtualenv.
+Pushmanager is two services - an API backend and a
+[Tornado](https://github.com/tornadoweb/tornado) frontend. Both must be run
+from inside a virtualenv.
 
 1. Provide a configuration file. `config.yaml.example` provides a base for you to fill out.
 
